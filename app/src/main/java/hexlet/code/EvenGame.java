@@ -1,31 +1,40 @@
 package hexlet.code;
 
-import java.util.Random;
+import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class EvenGame {
     static void startEvenGame() {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(in);
         String selectionAnswer;
         int countCorrectAnswer = 0;
+        int randomNum;
+        out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (countCorrectAnswer != 3) {
-            System.out.print("Question: ");
+        while (true) {
+            randomNum = (int) (Math.random() * 10) + 1;
+            out.printf("""
+                    Question: %d
+                    Your answer:\s""", randomNum);
             selectionAnswer = sc.next();
-            System.out.println("Your answer: " + selectionAnswer);
 
-            if (Integer.parseInt(selectionAnswer) % 2 == 0 && selectionAnswer.equals("yes")
-                    || Integer.parseInt(selectionAnswer) % 2 != 0 && selectionAnswer.equals("no")) {
-                System.out.println("Correct!");
+            if (randomNum % 2 == 0 && selectionAnswer.equals("yes")
+                    || randomNum % 2 != 0 && selectionAnswer.equals("no")) {
+                out.println("Correct!");
                 countCorrectAnswer++;
+                if (countCorrectAnswer == 3) {
+                    out.printf("Congratulations, %s!\n", App.userName);
+                    break;
+                }
             } else {
-                String correctAnswer = Integer.parseInt(selectionAnswer) % 2 == 0 ? "yes" : "no";
-                System.out.printf("'%s' is wrong answer ;(. "
+                String correctAnswer = randomNum % 2 == 0 ? "yes" : "no";
+                out.printf("'%s' is wrong answer ;(. "
                         + "Correct answer was '%s'\n", selectionAnswer, correctAnswer);
-                System.out.println("Let's try again, " + App.userName);
+                out.println("Let's try again, " + App.userName);
                 break;
             }
         }
+        sc.close();
     }
 }

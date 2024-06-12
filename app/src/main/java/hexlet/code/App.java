@@ -1,15 +1,17 @@
 package hexlet.code;
 
+import static java.lang.System.out;
+import static java.lang.System.in;
 import java.util.Scanner;
 
 public class App {
     static String userName;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(in);
         int selectionNum;
 
-        System.out.print("""
+        out.print("""
                 Please enter the game number and press Enter.
                 1 - Greet
                 2 - Even
@@ -18,12 +20,12 @@ public class App {
         selectionNum = sc.nextInt();
 
         if (selectionNum > 0) {
-            System.out.print("""
-                                        
+            out.print("""
+
                     Welcome to the Brain Games!
                     May I have your name?\s""");
             userName = sc.next();
-            System.out.printf("Hello, %s!\n", userName);
+            out.printf("Hello, %s!\n", userName);
         }
 
         if (selectionNum == 2) {
