@@ -2,16 +2,15 @@ package hexlet.code;
 
 import hexlet.code.games.CalculateGame;
 import hexlet.code.games.EvenGame;
-import static java.lang.System.out;
-import static java.lang.System.in;
 import java.util.Scanner;
+import static java.lang.System.out;
 
 public class App {
     public static String userName;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(in);
-        int selectionNum;
+        Scanner sc = new Scanner(System.in);
+        int gameNumber;
 
         out.print("""
                 Please enter the game number and press Enter.
@@ -20,9 +19,9 @@ public class App {
                 3 - Calc
                 0 - Exit
                 Your choice:\s""");
-        selectionNum = sc.nextInt();
+        gameNumber = sc.nextInt();
 
-        if (selectionNum > 0) {
+        if (gameNumber > 0) {
             out.print("""
 
                     Welcome to the Brain Games!
@@ -31,11 +30,11 @@ public class App {
             out.printf("Hello, %s!\n", userName);
         }
 
-        if (selectionNum == 2) {
+        if (gameNumber == 2) {
             EvenGame.startEvenGame();
         }
 
-        if (selectionNum == 3) {
+        if (gameNumber == 3) {
             CalculateGame.startCalculateGame();
         }
         sc.close();

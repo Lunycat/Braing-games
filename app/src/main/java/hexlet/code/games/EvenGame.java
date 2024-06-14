@@ -1,19 +1,18 @@
 package hexlet.code.games;
 
 import hexlet.code.App;
-import static java.lang.System.out;
-import static java.lang.System.in;
 import java.util.Scanner;
+import static java.lang.System.out;
 
 public class EvenGame {
     public static void startEvenGame() {
-        Scanner sc = new Scanner(in);
+        Scanner sc = new Scanner(System.in);
         String selectionAnswer;
         String correctAnswer;
         int countCorrectAnswer = 0;
         int randomNum;
-        out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
+        out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         while (countCorrectAnswer != 3) {
             randomNum = (int) (Math.random() * 10) + 1;
             correctAnswer = randomNum % 2 == 0 ? "yes" : "no";

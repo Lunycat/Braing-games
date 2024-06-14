@@ -1,15 +1,12 @@
 package hexlet.code.games;
 
 import hexlet.code.App;
-
 import java.util.Scanner;
-
 import static java.lang.System.out;
-import static java.lang.System.in;
 
 public class CalculateGame {
     public static void startCalculateGame() {
-        Scanner sc = new Scanner(in);
+        Scanner sc = new Scanner(System.in);
         int selectionAnswer;
         int choiceOfSign, num1, num2;
         int correctAnswer;
@@ -47,5 +44,6 @@ public class CalculateGame {
         } else {
             out.printf("Let's try again, %s!\n", App.userName);
         }
+        sc.close();
     }
 }
