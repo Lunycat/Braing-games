@@ -7,9 +7,13 @@ import static java.lang.System.out;
 
 public class App {
     public static String userName;
+    public static int countCorrectAnswer = 0;
+    public static Scanner sc;
+    public static String selectionAnswer;
+    public static String correctAnswer;
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        sc = new Scanner(System.in);
         int gameNumber;
 
         out.print("""
