@@ -2,6 +2,8 @@ package hexlet.code;
 
 import hexlet.code.games.CalculateGame;
 import hexlet.code.games.EvenGame;
+import hexlet.code.games.GCDGame;
+
 import java.util.Scanner;
 import static java.lang.System.out;
 
@@ -21,6 +23,7 @@ public class App {
                 1 - Greet
                 2 - Even
                 3 - Calc
+                4 - GCD
                 0 - Exit
                 Your choice:\s""");
         gameNumber = sc.nextInt();
@@ -33,13 +36,14 @@ public class App {
             userName = sc.next();
             out.printf("Hello, %s!\n", userName);
         }
-
         if (gameNumber == 2) {
             EvenGame.startEvenGame();
         }
-
         if (gameNumber == 3) {
             CalculateGame.startCalculateGame();
+        }
+        if (gameNumber == 4) {
+            GCDGame.startGCDGame();
         }
         sc.close();
     }
