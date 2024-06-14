@@ -31,7 +31,7 @@ public class EvenGame {
                 String correctAnswer = randomNum % 2 == 0 ? "yes" : "no";
                 out.printf("'%s' is wrong answer ;(. "
                         + "Correct answer was '%s'\n", selectionAnswer, correctAnswer);
-                out.println("Let's try again, " + App.userName);
+                out.printf("Let's try again, %s!\n", App.userName);
                 break;
             }
         }
