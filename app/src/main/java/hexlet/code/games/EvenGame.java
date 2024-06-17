@@ -9,9 +9,10 @@ public class EvenGame {
         int num;
 
         out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (App.countCorrectAnswer < 3) {
-            num = (int) (Math.random() * 10) + 1;
-            App.correctAnswer = num % 2 == 0 ? "yes" : "no";
+        while (App.getCountCorrectAnswer() < 3) {
+            int maxValueOfNum = 20;
+            num = (int) (Math.random() * maxValueOfNum) + 1;
+            App.setCorrectAnswer(num % 2 == 0 ? "yes" : "no");
             out.println("Question: " + num);
             Engine.checkAnswer();
         }

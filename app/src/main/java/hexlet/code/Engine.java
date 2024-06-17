@@ -6,23 +6,23 @@ public class Engine {
 
     public static void checkAnswer() {
         out.print("Your answer: ");
-        App.selectionAnswer = App.scanner.next();
+        App.setSelectionAnswer(App.scannerNext());
 
-        if (App.correctAnswer.equals(App.selectionAnswer)) {
+        if (App.getCorrectAnswer().equals(App.getSelectionAnswer())) {
             out.println("Correct!");
-            App.countCorrectAnswer++;
+            App.incrementCountCorrectAnswer();
         } else {
             out.printf("'%s' is wrong answer ;(. "
-                    + "Correct answer was '%s'\n", App.selectionAnswer, App.correctAnswer);
-            App.countCorrectAnswer = Integer.MAX_VALUE;
+                    + "Correct answer was '%s'.\n", App.getSelectionAnswer(), App.getCorrectAnswer());
+            App.setCountCorrectAnswer(Integer.MAX_VALUE);
         }
     }
 
     public static void printEnd() {
-        if (App.countCorrectAnswer == 3) {
-            out.printf("Congratulations, %s!\n", App.userName);
+        if (App.getCountCorrectAnswer() == 3) {
+            out.printf("Congratulations, %s!\n", App.getUserName());
         } else {
-            out.printf("Let's try again, %s!\n", App.userName);
+            out.printf("Let's try again, %s!\n", App.getUserName());
         }
     }
 }

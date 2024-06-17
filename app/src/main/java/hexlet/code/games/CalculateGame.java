@@ -11,18 +11,19 @@ public class CalculateGame {
         int num2;
 
         out.println("What is the result of the expression?");
-        while (App.countCorrectAnswer < 3) {
+        while (App.getCountCorrectAnswer() < 3) {
             choiceOfSign = (int) (Math.random() * 3);
-            num1 = (int) (Math.random() * 20) + 1;
-            num2 = (int) (Math.random() * 20) + 1;
+            int maxValueOfNum = 20;
+            num1 = (int) (Math.random() * maxValueOfNum) + 1;
+            num2 = (int) (Math.random() * maxValueOfNum) + 1;
             if (choiceOfSign == 0) {
-                App.correctAnswer = String.valueOf(num1 + num2);
+                App.setCorrectAnswer(String.valueOf(num1 + num2));
                 out.printf("Question: %d + %d\n", num1, num2);
             } else if (choiceOfSign == 1) {
-                App.correctAnswer = String.valueOf(num1 - num2);
+                App.setCorrectAnswer(String.valueOf(num1 - num2));
                 out.printf("Question: %d - %d\n", num1, num2);
             } else {
-                App.correctAnswer = String.valueOf(num1 * num2);
+                App.setCorrectAnswer(String.valueOf(num1 * num2));
                 out.printf("Question: %d * %d\n", num1, num2);
             }
             Engine.checkAnswer();

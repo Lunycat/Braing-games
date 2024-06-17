@@ -10,10 +10,11 @@ public class GCDGame {
         int num2;
 
         out.println("Find the greatest common divisor of given numbers.");
-        while (App.countCorrectAnswer < 3) {
-            num1 = (int) (Math.random() * 20) + 1;
-            num2 = (int) (Math.random() * 20) + 1;
-            App.correctAnswer = String.valueOf(gcd(num1, num2));
+        while (App.getCountCorrectAnswer() < 3) {
+            int maxValueOfNum = 20;
+            num1 = (int) (Math.random() * maxValueOfNum) + 1;
+            num2 = (int) (Math.random() * maxValueOfNum) + 1;
+            App.setCorrectAnswer(String.valueOf(gcd(num1, num2)));
             out.printf("Question: %s %s\n", num1, num2);
             Engine.checkAnswer();
         }
