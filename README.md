@@ -5,3 +5,4 @@
 1) Link to my asciinema EvenGame: https://asciinema.org/a/GBfhSYjgloCYkxhANIUWmVExB
 2) Link to my asciinema CalculateGame: https://asciinema.org/a/2VoLE7s6zbST9slOiy0DEYtJo
 3) Link to my asciinema GCDGame: https://asciinema.org/a/68C6kTqPQ8mClxRht377wccRx
+4) Link to my asciinema ProgressionGame: https://asciinema.org/a/ABlvUCA2OauB5IkM8xFkujw8p

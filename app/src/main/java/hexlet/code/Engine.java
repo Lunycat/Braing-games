@@ -4,9 +4,9 @@ import static java.lang.System.out;
 
 public class Engine {
 
-    public static void check() {
+    public static void checkAnswer() {
         out.print("Your answer: ");
-        App.selectionAnswer = App.sc.next();
+        App.selectionAnswer = App.scanner.next();
 
         if (App.correctAnswer.equals(App.selectionAnswer)) {
             out.println("Correct!");

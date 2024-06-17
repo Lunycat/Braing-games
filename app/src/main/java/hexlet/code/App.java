@@ -11,12 +11,12 @@ import static java.lang.System.out;
 public class App {
     public static String userName;
     public static int countCorrectAnswer = 0;
-    public static Scanner sc;
+    public static Scanner scanner;
     public static String selectionAnswer;
     public static String correctAnswer;
 
     public static void main(String[] args) {
-        sc = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         int gameNumber;
 
         out.print("""
@@ -25,30 +25,32 @@ public class App {
                 2 - Even
                 3 - Calc
                 4 - GCD
+                5 - Progression
                 0 - Exit
                 Your choice:\s""");
-        gameNumber = sc.nextInt();
+        gameNumber = scanner.nextInt();
 
-        if (gameNumber > 0) {
+        if (gameNumber > 0 && gameNumber < 7) {
             out.print("""
 
-                    Welcome to the Brain Games!
-                    May I have your name?\s""");
-            userName = sc.next();
+                Welcome to the Brain Games!
+                May I have your name?\s""");
+            userName = scanner.next();
             out.printf("Hello, %s!\n", userName);
+
+            if (gameNumber == 2) {
+                EvenGame.startEvenGame();
+            }
+            if (gameNumber == 3) {
+                CalculateGame.startCalculateGame();
+            }
+            if (gameNumber == 4) {
+                GCDGame.startGCDGame();
+            }
+            if (gameNumber == 5) {
+                ProgressionGame.startProgressionGame();
+            }
+            scanner.close();
         }
-        if (gameNumber == 2) {
-            EvenGame.startEvenGame();
-        }
-        if (gameNumber == 3) {
-            CalculateGame.startCalculateGame();
-        }
-        if (gameNumber == 4) {
-            GCDGame.startGCDGame();
-        }
-        if (gameNumber == 5) {
-            ProgressionGame.startProgressionGame();
-        }
-        sc.close();
     }
 }

@@ -15,7 +15,7 @@ public class GCDGame {
             num2 = (int) (Math.random() * 20) + 1;
             App.correctAnswer = String.valueOf(gcd(num1, num2));
             out.printf("Question: %s %s\n", num1, num2);
-            Engine.check();
+            Engine.checkAnswer();
         }
         Engine.printEnd();
     }

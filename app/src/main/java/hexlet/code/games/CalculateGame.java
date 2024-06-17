@@ -25,7 +25,7 @@ public class CalculateGame {
                 App.correctAnswer = String.valueOf(num1 * num2);
                 out.printf("Question: %d * %d\n", num1, num2);
             }
-            Engine.check();
+            Engine.checkAnswer();
         }
         Engine.printEnd();
     }

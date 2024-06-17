@@ -6,15 +6,14 @@ import static java.lang.System.out;
 
 public class EvenGame {
     public static void startEvenGame() {
-        int randomNum;
-
+        int num;
 
         out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
         while (App.countCorrectAnswer < 3) {
-            randomNum = (int) (Math.random() * 10) + 1;
-            App.correctAnswer = randomNum % 2 == 0 ? "yes" : "no";
-            out.println("Question: " + randomNum);
-            Engine.check();
+            num = (int) (Math.random() * 10) + 1;
+            App.correctAnswer = num % 2 == 0 ? "yes" : "no";
+            out.println("Question: " + num);
+            Engine.checkAnswer();
         }
         Engine.printEnd();
     }
