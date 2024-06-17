@@ -9,15 +9,14 @@ public class PrimeGame {
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         while (App.countCorrectAnswer < 3) {
             int num = (int) (Math.random() * 1000);
+            App.correctAnswer = "yes";
 
             out.println("Question: " + num);
-            if (num == 2 || num == 3 || num == 5 || num == 7) {
-                App.correctAnswer = "yes";
-            } else {
-                App.correctAnswer = num % 2 != 0
-                        && num % 3 != 0
-                        && num % 5 != 0
-                        && num % 7 != 0 ? "yes" : "no";
+            for (int i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i == 0) {
+                    App.correctAnswer = "no";
+                    break;
+                }
             }
             Engine.checkAnswer();
         }
