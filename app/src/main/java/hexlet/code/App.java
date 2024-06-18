@@ -14,15 +14,16 @@ public class App {
     private static Scanner scanner;
     private static String selectionAnswer;
     private static String correctAnswer;
+    private static final int REQUIRED_SCORE_OF_CORRECT_ANSWERS = 3;
 
     public static void main(String[] args) {
         scanner = new Scanner(System.in);
         int gameNumber;
-        int evenGame = 2;
-        int calculateGame = 3;
-        int gcdGame = 4;
-        int progressionGame = 5;
-        int primeGame = 6;
+        final int evenGame = 2;
+        final int calculateGame = 3;
+        final int gdcGame = 4;
+        final int progressionGame = 5;
+        final int primeGame = 6;
 
         out.print("""
                 Please enter the game number and press Enter.
@@ -36,7 +37,7 @@ public class App {
                 Your choice:\s""");
         gameNumber = scanner.nextInt();
 
-        if (gameNumber > 0 && gameNumber < 7) {
+        if (gameNumber > 0 && gameNumber <= primeGame) {
             out.print("""
 
                 Welcome to the Brain Games!
@@ -48,7 +49,7 @@ public class App {
                 EvenGame.startEvenGame();
             } else if (gameNumber == calculateGame) {
                 CalculateGame.startCalculateGame();
-            } else if (gameNumber == gcdGame) {
+            } else if (gameNumber == gdcGame) {
                 GCDGame.startGCDGame();
             } else if (gameNumber == progressionGame) {
                 ProgressionGame.startProgressionGame();
@@ -75,9 +76,12 @@ public class App {
         return selectionAnswer;
     }
 
+    public static void setCorrectAnswer(String answer) {
+        App.correctAnswer = answer;
+    }
 
-    public static void setCorrectAnswer(String correctAnswer) {
-        App.correctAnswer = correctAnswer;
+    public static void setSelectionAnswer(String answer) {
+        App.selectionAnswer = answer;
     }
 
     public static void setCountCorrectAnswer(int i) {
@@ -88,11 +92,11 @@ public class App {
         countCorrectAnswer += 1;
     }
 
-    public static void setSelectionAnswer(String selectionAnswer) {
-        App.selectionAnswer = selectionAnswer;
-    }
-
     public static String scannerNext() {
         return scanner.next();
+    }
+
+    public static int getRequiredScoreOfCorrectAnswers() {
+        return REQUIRED_SCORE_OF_CORRECT_ANSWERS;
     }
 }

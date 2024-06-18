@@ -7,11 +7,12 @@ import static java.lang.System.out;
 public class ProgressionGame {
     public static void startProgressionGame() {
         out.println("What number is missing in the progression?");
-        while (App.getCountCorrectAnswer() < 3) {
-            int maxValueOfNum = 10;
-            int maxValueOfSummand = 4;
-            int maxValueOfProgression = 6;
-            int sizeOfProgression = (int) (Math.random() * maxValueOfProgression) + 5;
+        while (App.getCountCorrectAnswer() < App.getRequiredScoreOfCorrectAnswers()) {
+            final int maxValueOfNum = 10;
+            final int maxValueOfSummand = 4;
+            final int maxValueOfProgression = 6;
+            final int minValueOfProgression = 5;
+            int sizeOfProgression = (int) (Math.random() * maxValueOfProgression) + minValueOfProgression;
             int num = (int) (Math.random() * maxValueOfNum) + 1;
             int summand = (int) (Math.random() * maxValueOfSummand) + 1;
             int indexOfHiddenNum = (int) (Math.random() * sizeOfProgression);

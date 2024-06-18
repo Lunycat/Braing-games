@@ -19,7 +19,7 @@ public class Engine {
     }
 
     public static void printEnd() {
-        if (App.getCountCorrectAnswer() == 3) {
+        if (App.getCountCorrectAnswer() == App.getRequiredScoreOfCorrectAnswers()) {
             out.printf("Congratulations, %s!\n", App.getUserName());
         } else {
             out.printf("Let's try again, %s!\n", App.getUserName());
