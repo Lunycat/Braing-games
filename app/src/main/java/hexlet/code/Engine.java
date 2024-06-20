@@ -3,23 +3,26 @@ package hexlet.code;
 import static java.lang.System.out;
 
 public class Engine {
+    public static void startEngine(String[] questions, String[] correctAnswers) {
+        String selectionAnswer;
+        int indexCorrectAnswer = 0;
 
-    public static void checkAnswer() {
-        out.print("Your answer: ");
-        App.setSelectionAnswer(App.scannerNext());
+        while (indexCorrectAnswer < App.getRequiredScoreOfCorrectAnswers()) {
+            out.println("Question: " + questions[indexCorrectAnswer]);
+            out.print("Your answer: ");
+            selectionAnswer = App.scannerNext();
 
-        if (App.getCorrectAnswer().equals(App.getSelectionAnswer())) {
-            out.println("Correct!");
-            App.incrementCountCorrectAnswer();
-        } else {
-            out.printf("'%s' is wrong answer ;(. "
-                    + "Correct answer was '%s'.\n", App.getSelectionAnswer(), App.getCorrectAnswer());
-            App.setCountCorrectAnswer(Integer.MAX_VALUE);
+            if (selectionAnswer.equals(correctAnswers[indexCorrectAnswer])) {
+                out.println("Correct!");
+                indexCorrectAnswer++;
+            } else {
+                out.printf("'%s' is wrong answer ;(. "
+                        + "Correct answer was '%s'.\n", selectionAnswer, correctAnswers[indexCorrectAnswer]);
+                break;
+            }
         }
-    }
 
-    public static void printEnd() {
-        if (App.getCountCorrectAnswer() == App.getRequiredScoreOfCorrectAnswers()) {
+        if (indexCorrectAnswer == App.getRequiredScoreOfCorrectAnswers()) {
             out.printf("Congratulations, %s!\n", App.getUserName());
         } else {
             out.printf("Let's try again, %s!\n", App.getUserName());

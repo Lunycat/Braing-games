@@ -2,34 +2,43 @@ package hexlet.code.games;
 
 import hexlet.code.App;
 import hexlet.code.Engine;
-import static java.lang.System.out;
 
 public class CalculateGame {
     public static void startCalculateGame() {
+        final int maxValueOfNum = 20;
+        final int maxValueOfSign = 3;
         int choiceOfSign;
         int num1;
         int num2;
+        String[] questions = new String[App.getRequiredScoreOfCorrectAnswers()];
+        String[] correctAnswers = new String[App.getRequiredScoreOfCorrectAnswers()];
 
-        out.println("What is the result of the expression?");
-        while (App.getCountCorrectAnswer() < App.getRequiredScoreOfCorrectAnswers()) {
-            final int maxValueOfNum = 20;
-            final int maxValueOfSign = 3;
+        for (int i = 0; i < App.getRequiredScoreOfCorrectAnswers(); i++) {
             choiceOfSign = (int) (Math.random() * maxValueOfSign);
             num1 = (int) (Math.random() * maxValueOfNum) + 1;
             num2 = (int) (Math.random() * maxValueOfNum) + 1;
-
-            if (choiceOfSign == 0) {
-                App.setCorrectAnswer(String.valueOf(num1 + num2));
-                out.printf("Question: %d + %d\n", num1, num2);
-            } else if (choiceOfSign == 1) {
-                App.setCorrectAnswer(String.valueOf(num1 - num2));
-                out.printf("Question: %d - %d\n", num1, num2);
-            } else {
-                App.setCorrectAnswer(String.valueOf(num1 * num2));
-                out.printf("Question: %d * %d\n", num1, num2);
-            }
-            Engine.checkAnswer();
+            setQuestionsAndAnswers(questions, correctAnswers, i, choiceOfSign, num1, num2);
         }
-        Engine.printEnd();
+        System.out.println("What is the result of the expression?");
+        Engine.startEngine(questions, correctAnswers);
     }
+
+    private static void setQuestionsAndAnswers(String[] questions, String[] correctAnswers,
+                                               int index, int choiceOfSign, int num1, int num2) {
+        String question;
+        String answer;
+        if (choiceOfSign == 0) {
+            question = num1 + " + " + num2;
+            answer = String.valueOf(num1 + num2);
+        } else if (choiceOfSign == 1) {
+            question =  num1 + " - " + num2;
+            answer = String.valueOf(num1 - num2);
+        } else {
+            question =  num1 + " * " + num2;
+            answer = String.valueOf(num1 * num2);
+        }
+        questions[index] = question;
+        correctAnswers[index] = answer;
+    }
+
 }

@@ -2,26 +2,28 @@ package hexlet.code.games;
 
 import hexlet.code.App;
 import hexlet.code.Engine;
+
 import static java.lang.System.out;
 
 public class GCDGame {
     public static void startGCDGame() {
+        final int maxValueOfNum = 20;
         int num1;
         int num2;
+        String[] questions = new String[App.getRequiredScoreOfCorrectAnswers()];
+        String[] correctAnswers = new String[App.getRequiredScoreOfCorrectAnswers()];
 
-        out.println("Find the greatest common divisor of given numbers.");
-        while (App.getCountCorrectAnswer() < App.getRequiredScoreOfCorrectAnswers()) {
-            final int maxValueOfNum = 20;
+        for (int i = 0; i < App.getRequiredScoreOfCorrectAnswers(); i++) {
             num1 = (int) (Math.random() * maxValueOfNum) + 1;
             num2 = (int) (Math.random() * maxValueOfNum) + 1;
-            App.setCorrectAnswer(String.valueOf(gcd(num1, num2)));
-            out.printf("Question: %s %s\n", num1, num2);
-            Engine.checkAnswer();
+            questions[i] = "Question: " + num1 + " " + num2;
+            correctAnswers[i] = String.valueOf(getCorrectAnswer(num1, num2));
         }
-        Engine.printEnd();
+        out.println("Find the greatest common divisor of given numbers.");
+        Engine.startEngine(questions, correctAnswers);
     }
 
-    private static int gcd(int a, int b) {
-        return (a % b == 0) ? Math.abs(b) : gcd(b, a % b);
+    private static int getCorrectAnswer(int num1, int num2) {
+        return (num1 % num2 == 0) ? Math.abs(num2) : getCorrectAnswer(num2, num1 % num2);
     }
 }

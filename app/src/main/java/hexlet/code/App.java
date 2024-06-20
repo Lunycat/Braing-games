@@ -1,19 +1,17 @@
 package hexlet.code;
 
-import hexlet.code.games.CalculateGame;
 import hexlet.code.games.EvenGame;
+import hexlet.code.games.CalculateGame;
 import hexlet.code.games.GCDGame;
-import hexlet.code.games.PrimeGame;
 import hexlet.code.games.ProgressionGame;
+import hexlet.code.games.PrimeGame;
+
 import java.util.Scanner;
 import static java.lang.System.out;
 
 public class App {
     private static String userName;
-    private static int countCorrectAnswer = 0;
     private static Scanner scanner;
-    private static String selectionAnswer;
-    private static String correctAnswer;
     private static final int REQUIRED_SCORE_OF_CORRECT_ANSWERS = 3;
 
     public static void main(String[] args) {
@@ -60,36 +58,8 @@ public class App {
         }
     }
 
-    public static int getCountCorrectAnswer() {
-        return countCorrectAnswer;
-    }
-
     public static String getUserName() {
         return userName;
-    }
-
-    public static String getCorrectAnswer() {
-        return correctAnswer;
-    }
-
-    public static String getSelectionAnswer() {
-        return selectionAnswer;
-    }
-
-    public static void setCorrectAnswer(String answer) {
-        App.correctAnswer = answer;
-    }
-
-    public static void setSelectionAnswer(String answer) {
-        App.selectionAnswer = answer;
-    }
-
-    public static void setCountCorrectAnswer(int i) {
-        countCorrectAnswer = i;
-    }
-
-    public static void incrementCountCorrectAnswer() {
-        countCorrectAnswer += 1;
     }
 
     public static String scannerNext() {

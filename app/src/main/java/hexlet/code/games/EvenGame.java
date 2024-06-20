@@ -2,20 +2,22 @@ package hexlet.code.games;
 
 import hexlet.code.App;
 import hexlet.code.Engine;
-import static java.lang.System.out;
 
 public class EvenGame {
     public static void startEvenGame() {
-        int num;
+        final int maxValueOfNum = 20;
+        String[] questions = new String[App.getRequiredScoreOfCorrectAnswers()];
+        String[] correctAnswers = new String[App.getRequiredScoreOfCorrectAnswers()];
 
-        out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        while (App.getCountCorrectAnswer() < App.getRequiredScoreOfCorrectAnswers()) {
-            final int maxValueOfNum = 20;
-            num = (int) (Math.random() * maxValueOfNum) + 1;
-            App.setCorrectAnswer(num % 2 == 0 ? "yes" : "no");
-            out.println("Question: " + num);
-            Engine.checkAnswer();
+        for (int i = 0; i < App.getRequiredScoreOfCorrectAnswers(); i++) {
+            questions[i] = String.valueOf((int) (Math.random() * maxValueOfNum) + 1);
+            correctAnswers[i] = getCorrectAnswer(questions[i]);
         }
-        Engine.printEnd();
+        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        Engine.startEngine(questions, correctAnswers);
+    }
+
+    private static String getCorrectAnswer(String questions) {
+        return Integer.parseInt(questions) % 2 == 0 ? "yes" : "no";
     }
 }

@@ -2,24 +2,28 @@ package hexlet.code.games;
 
 import hexlet.code.App;
 import hexlet.code.Engine;
-import static java.lang.System.out;
 
 public class PrimeGame {
     public static void startPrimeGame() {
-        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        while (App.getCountCorrectAnswer() < App.getRequiredScoreOfCorrectAnswers()) {
-            final int maxValueOfNum = 1000;
-            int num = (int) (Math.random() * maxValueOfNum);
-            App.setCorrectAnswer("yes");
-            out.println("Question: " + num);
-            for (int i = 2; i <= Math.sqrt(num); i++) {
-                if (num % i == 0) {
-                    App.setCorrectAnswer("no");
-                    break;
-                }
-            }
-            Engine.checkAnswer();
+        final int maxValueOfNum = 1000;
+        String[] questions = new String[App.getRequiredScoreOfCorrectAnswers()];
+        String[] correctAnswers = new String[App.getRequiredScoreOfCorrectAnswers()];
+
+        for (int i = 0; i < App.getRequiredScoreOfCorrectAnswers(); i++) {
+            questions[i] = String.valueOf((int) (Math.random() * maxValueOfNum));
+            correctAnswers[i] = getCorrectAnswer(questions[i]);
         }
-        Engine.printEnd();
+        System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+        Engine.startEngine(questions, correctAnswers);
+    }
+
+    private static String getCorrectAnswer(String num) {
+        int numInt = Integer.parseInt(num);
+        for (int i = 2; i <= Math.sqrt(numInt); i++) {
+            if (numInt % i == 0) {
+                return "no";
+            }
+        }
+        return "yes";
     }
 }
