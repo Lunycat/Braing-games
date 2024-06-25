@@ -11,9 +11,8 @@ public class CalculateGame {
         int num1;
         int num2;
         String operator;
-        String[] questions = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS];
-        String[] correctAnswers = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS];
-        String[][] questionsAndCorrectAnswers = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS][];
+        String[][] questionsAndCorrectAnswers =
+                new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS][Engine.PAIR_OF_QUESTION_AND_ANSWER];
 
         for (int i = 0; i < Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS; i++) {
             choiceOfSign = (int) (Math.random() * MAX_VALUE_OF_SIGN);
@@ -22,11 +21,9 @@ public class CalculateGame {
             operator = getOperator(choiceOfSign);
             questionsAndCorrectAnswers[i][0] = getQuestion(num1, operator, num2);
             questionsAndCorrectAnswers[i][1] = getCorrectAnswer(num1, operator, num2);
-            correctAnswers[i] = getCorrectAnswer(num1, operator, num2);
-            questions[i] = getQuestion(num1, operator, num2);
         }
         System.out.println("What is the result of the expression?");
-        Engine.startEngine(questions, correctAnswers);
+        Engine.startEngine(questionsAndCorrectAnswers);
     }
 
     private static String getOperator(int choiceOfSign) {

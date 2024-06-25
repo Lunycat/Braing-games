@@ -10,19 +10,19 @@ public class ProgressionGame {
     private static final int MIN_VALUE_OF_PROGRESSION = 5;
 
     public static void startProgressionGame() {
-        String[] questions = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS];
-        String[] correctAnswers = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS];
+        String[][] questionsAndCorrectAnswers =
+                new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS][Engine.PAIR_OF_QUESTION_AND_ANSWER];
 
         for (int i = 0; i < Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS; i++) {
             int sizeOfProgression = (int) (Math.random() * MAX_VALUE_OF_PROGRESSION) + MIN_VALUE_OF_PROGRESSION;
             int num = (int) (Math.random() * MAX_VALUE_OF_NUM) + 1;
             int summand = (int) (Math.random() * MAX_VALUE_OF_SUMMAND) + 1;
             int indexOfHiddenNum = (int) (Math.random() * sizeOfProgression);
-            questions[i] = getQuestions(indexOfHiddenNum, sizeOfProgression, num, summand);
-            correctAnswers[i] = gerCorrectAnswer(indexOfHiddenNum, sizeOfProgression, num, summand);
+            questionsAndCorrectAnswers[i][0] = getQuestions(indexOfHiddenNum, sizeOfProgression, num, summand);
+            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(indexOfHiddenNum, sizeOfProgression, num, summand);
         }
         System.out.println("What number is missing in the progression?");
-        Engine.startEngine(questions, correctAnswers);
+        Engine.startEngine(questionsAndCorrectAnswers);
     }
 
 
@@ -39,7 +39,7 @@ public class ProgressionGame {
         return sj.toString();
     }
 
-    private static String gerCorrectAnswer(int indexOfHiddenNum, int sizeOfProgression, int num, int summand) {
+    private static String getCorrectAnswer(int indexOfHiddenNum, int sizeOfProgression, int num, int summand) {
         int result = 0;
         for (int i = 0; i < sizeOfProgression; i++) {
             if (i == indexOfHiddenNum) {
