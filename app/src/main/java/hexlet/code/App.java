@@ -12,7 +12,6 @@ import static java.lang.System.out;
 public class App {
     private static String userName;
     private static Scanner scanner;
-    private static final int REQUIRED_SCORE_OF_CORRECT_ANSWERS = 3;
 
     public static void main(String[] args) {
         scanner = new Scanner(System.in);
@@ -64,9 +63,5 @@ public class App {
 
     public static String scannerNext() {
         return scanner.next();
-    }
-
-    public static int getRequiredScoreOfCorrectAnswers() {
-        return REQUIRED_SCORE_OF_CORRECT_ANSWERS;
     }
 }

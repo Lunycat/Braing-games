@@ -1,16 +1,16 @@
 package hexlet.code.games;
 
-import hexlet.code.App;
 import hexlet.code.Engine;
 
 public class PrimeGame {
-    public static void startPrimeGame() {
-        final int maxValueOfNum = 1000;
-        String[] questions = new String[App.getRequiredScoreOfCorrectAnswers()];
-        String[] correctAnswers = new String[App.getRequiredScoreOfCorrectAnswers()];
+    private static final int MAX_VALUE_OF_NUM = 1000;
 
-        for (int i = 0; i < App.getRequiredScoreOfCorrectAnswers(); i++) {
-            questions[i] = String.valueOf((int) (Math.random() * maxValueOfNum));
+    public static void startPrimeGame() {
+        String[] questions = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS];
+        String[] correctAnswers = new String[Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS];
+
+        for (int i = 0; i < Engine.REQUIRED_SCORE_OF_CORRECT_ANSWERS; i++) {
+            questions[i] = String.valueOf((int) (Math.random() * MAX_VALUE_OF_NUM));
             correctAnswers[i] = getCorrectAnswer(questions[i]);
         }
         System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
