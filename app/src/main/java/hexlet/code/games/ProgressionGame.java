@@ -8,6 +8,7 @@ public class ProgressionGame {
     private static final int MAX_VALUE_OF_SUMMAND = 4;
     private static final int MAX_VALUE_OF_PROGRESSION = 6;
     private static final int MIN_VALUE_OF_PROGRESSION = 5;
+    private static final String RULES_OF_GAME = "What number is missing in the progression?";
 
     public static void startProgressionGame() {
         String[][] questionsAndCorrectAnswers =
@@ -18,22 +19,24 @@ public class ProgressionGame {
             int num = (int) (Math.random() * MAX_VALUE_OF_NUM) + 1;
             int summand = (int) (Math.random() * MAX_VALUE_OF_SUMMAND) + 1;
             int indexOfHiddenNum = (int) (Math.random() * sizeOfProgression);
-            questionsAndCorrectAnswers[i][0] = getQuestions(indexOfHiddenNum, sizeOfProgression, num, summand);
+            String progression = getProgression(sizeOfProgression, num, summand);
+            questionsAndCorrectAnswers[i][0] = getQuestions(progression, indexOfHiddenNum);
             questionsAndCorrectAnswers[i][1] = getCorrectAnswer(indexOfHiddenNum, sizeOfProgression, num, summand);
         }
-        System.out.println("What number is missing in the progression?");
-        Engine.startEngine(questionsAndCorrectAnswers);
+        Engine.startEngine(questionsAndCorrectAnswers, RULES_OF_GAME);
     }
 
 
-    private static String getQuestions(int indexOfHiddenNum, int sizeOfProgression, int num, int summand) {
+    private static String getQuestions(String progression, int indexOfHiddenNum) {
+        String[] progressionArray = progression.split(" ");
+        progressionArray[indexOfHiddenNum] = "..";
+        return String.join(" ", progressionArray);
+    }
+
+    private static String getProgression(int sizeOfProgression, int num, int summand) {
         StringJoiner sj = new StringJoiner(" ");
         for (int i = 0; i < sizeOfProgression; i++) {
-            if (i == indexOfHiddenNum) {
-                sj.add("..");
-            } else {
-                sj.add(String.valueOf(num));
-            }
+            sj.add(String.valueOf(num));
             num += summand;
         }
         return sj.toString();

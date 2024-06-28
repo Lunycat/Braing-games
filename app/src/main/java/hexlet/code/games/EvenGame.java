@@ -4,6 +4,7 @@ import hexlet.code.Engine;
 
 public class EvenGame {
     private static final int MAX_VALUE_OF_NUM = 20;
+    private static final String RULES_OF_GAME = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     public static void startEvenGame() {
         String[][] questionsAndCorrectAnswers =
@@ -14,8 +15,7 @@ public class EvenGame {
             questionsAndCorrectAnswers[i][1] = isEven(questionsAndCorrectAnswers[i][0]) ? "yes" : "no";
 
         }
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        Engine.startEngine(questionsAndCorrectAnswers);
+        Engine.startEngine(questionsAndCorrectAnswers, RULES_OF_GAME);
     }
 
     private static boolean isEven(String questions) {
