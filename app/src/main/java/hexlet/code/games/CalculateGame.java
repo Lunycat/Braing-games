@@ -42,9 +42,7 @@ public class CalculateGame {
             case "*" -> {
                 return num1 * num2;
             }
-            default -> {
-                return -1;
-            }
+            default -> throw new IllegalArgumentException("An invalid operator was passed");
         }
     }
 }
