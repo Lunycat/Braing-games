@@ -1,7 +1,6 @@
+# Описание
 [![Actions Status](https://github.com/Lunycat/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Lunycat/java-project-61/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c34cc534f6a8c3b8e626/maintainability)](https://codeclimate.com/github/Lunycat/java-project-61/maintainability)
-
-# Описание
 
 «Игры разума» — набор из пяти консольных игр, построенных по принципу популярных мобильных приложений для прокачки мозга. Каждая игра задает вопросы, на которые нужно дать правильные ответы. После трех правильных ответов считается, что игра пройдена. Неправильные ответы завершают игру и предлагают пройти ее заново.
 ##Игры:
